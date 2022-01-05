@@ -24,7 +24,7 @@ public class CSVUtils {
     
         Calendar calendar = Calendar.getInstance();
         // To get the yesterday's date
-        calendar.add( Calendar.DATE, -1 );
+        calendar.add( Calendar.DATE, - 1);
         System.out.println("Latest Date -> " + dateFormat.format( calendar.getTime() ));
         
         

@@ -90,7 +90,6 @@ public class CovidController {
     public List<CovidReportCard> getCasesForCountry(@PathVariable int noOfCountry)
     {
         List< CovidReportCard > covidReportCards = new ArrayList<>();
-        int totalCases = 0;
         
         try{
             covidReportCards =  getCasesSortedByOrder(true).stream().limit( noOfCountry ).collect(Collectors.toList());
