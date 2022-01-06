@@ -17,13 +17,15 @@ public class CSVUtils {
     public static List<CovidReportCard> readCSVFileFromUrl() throws Exception {
     
         List<CovidReportCard> covidReportCards = new ArrayList<>();
+        // we can put this url in properties files as well.
         URL url = new URL( "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv");
     
         CSVFormat csvFormat = CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase();
+        // date format available in csv file.
         SimpleDateFormat dateFormat = new SimpleDateFormat("M/d/yy");
     
         Calendar calendar = Calendar.getInstance();
-        // To get the yesterday's date
+        // To get the yesterday's date.
         calendar.add( Calendar.DATE, - 1);
         System.out.println("Latest Date -> " + dateFormat.format( calendar.getTime() ));
         

@@ -30,12 +30,14 @@ public class CovidController {
     @Value( "${server.port}")
     private int serverPort;
     
+    /*
+    get the list of new cases.
+    * */
     @GetMapping("/newcases")
     public String getStatus()
     {
         try{
             List< CovidReportCard > covidReportCards = CSVUtils.readCSVFileFromUrl();
-            System.out.println("Abc");
     
         } catch (Exception e) {
             System.out.println(e);
@@ -44,6 +46,11 @@ public class CovidController {
         
         return "Welcome to Covid Controller!!";
     }
+    
+    /*
+    get list of new cased orderby number of no of casses.
+    @param ascending : boolean
+    * */
     
     @GetMapping("/newcases/sortedByCases")
     public  List<CovidReportCard> getCasesSortedByOrder(boolean ascending)
@@ -67,6 +74,11 @@ public class CovidController {
         return covidReportCards;
     }
     
+    /*
+    list number of cases for provided country
+    @param country : string -> name of country
+    * */
+    
     @GetMapping("/newcases/country/{country}")
     public  CovidReportCard getCasesForCountry(@PathVariable String country)
     {
@@ -86,6 +98,10 @@ public class CovidController {
         return new CovidReportCard(country, totalCases);
     }
     
+    /*
+    get first N countries with highest number of cases
+    @param noOfCountry : int -> value of N
+    * */
     @GetMapping("/newcases/topcountries/{noOfCountry}")
     public List<CovidReportCard> getCasesForCountry(@PathVariable int noOfCountry)
     {
